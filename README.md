@@ -81,12 +81,23 @@ Flash successful! Please wait a moment while your device is updated...
 #### **Monitor the published sensor values**
 
 Debug readings from local serial port (Photon need to be connected to USB)
-
+```
 $ particle serial monitor
-
-Opening serial monitor for com port: &quot;COM12&quot;
-
-Distance: 196.03 cm
+Opening serial monitor for com port: "/dev/tty.usbmodem1411"
+Serial monitor opened successfully:
+Report: 13.55 cm
+Report: 55.19 cm
+Report: 55.17 cm
+Report: 59.33 cm
+Report: -1.00 cm
+Report: 55.88 cm
+Report: 57.36 cm
+Report: 30.78 cm
+Report: 110.74 cm
+Report: -1.00 cm
+Report: 229.14 cm
+Report: 231.03 cm
+```
 
 Monitor the values published to the cloud (CLI)
 
