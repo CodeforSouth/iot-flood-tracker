@@ -36,8 +36,9 @@ Connect Particle to the cloud
 **Identify device**
 
 First you want to know the Device ID of the Photon you just connected.
-
+```
 $ particle identify
+```
 
 Your device id is 9999999999
 
