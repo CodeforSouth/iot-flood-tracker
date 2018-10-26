@@ -6,12 +6,12 @@ In this experiment you are going to build a sensor able to measure distances fro
 
 To build this sensor you need the following hardware:
 
-1x breadboard
-1x Particle Photon
-1x HC-SR04 sensor
-1x 470 Ohm resistor
-1x 1k Ohm resistor
-4x male-male wires
+- 1x breadboard
+- 1x Particle Photon
+- 1x HC-SR04 sensor
+- 1x 470 Ohm resistor
+- 1x 1k Ohm resistor
+- 4x male-male wires
 
 **Prepare your laptop**
 
