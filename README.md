@@ -29,6 +29,8 @@ R1: 470 Ohm (yellow purple black black [brown])
 R2: 1k Ohm (brown black black brown [brown])
 
 
+https://github.com/Code-for-Miami/iot-flood-tracker/blob/master/Wiring.png
+
 
 **Connect Particle to the cloud**
 
