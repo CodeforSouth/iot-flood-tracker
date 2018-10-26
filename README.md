@@ -38,7 +38,11 @@ Connect Particle to the cloud
 First you want to know the Device ID of the Photon you just connected.
 ```
 $ particle identify
-Your device id is 9999999999
+
+Your device id is 2300211353337353037
+Your IMEI is 35316207243
+Your ICCID is 8936500002860393
+Your system firmware version is 0.7.0
 ```
 Copy this device id in your TextPad, you will need it in a few moments.
 
@@ -98,19 +102,6 @@ Report: -1.00 cm
 Report: 229.14 cm
 Report: 231.03 cm
 ```
-
-Monitor the values published to the cloud (CLI)
-
-$ particle monitor \&lt;device ID\&gt;
-
-polling server to see what devices are online, and what variables are available
-
-? Which variable did you want? cm (double)
-
-Hit CTRL-C to stop!
-
-195.60344827586206
-
 
 
 **Go Hack add features and build the hardware**
