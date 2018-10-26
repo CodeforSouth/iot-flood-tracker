@@ -38,11 +38,9 @@ Connect Particle to the cloud
 First you want to know the Device ID of the Photon you just connected.
 ```
 $ particle identify
-```
-
 Your device id is 9999999999
-
-Copy this device id in your clipboard, you will need it in a few moments.
+```
+Copy this device id in your TextPad, you will need it in a few moments.
 
 Photon status LED, it should be BREADING CYAN when it&#39;s happily connected to the internet.
 
