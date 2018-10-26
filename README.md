@@ -1,4 +1,4 @@
-**Build a Photon Distance Sensor**
+**Build a Electron Distance Sensor**
 
 In this experiment you are going to build a sensor able to measure distances from 10cm up to 200cm. The data will be transmitted via cell to a cloud service.
 
@@ -7,7 +7,7 @@ In this experiment you are going to build a sensor able to measure distances fro
 To build this sensor you need the following hardware:
 
 - 1x breadboard
-- 1x Particle Photon
+- 1x Particle Electron
 - 1x HC-SR04 sensor
 - 1x 470 Ohm resistor
 - 1x 1k Ohm resistor
