@@ -11,7 +11,7 @@ To build this sensor you need the following hardware:
 - 1x HC-SR04 sensor
 - 1x 470 Ohm resistor
 - 1x 1k Ohm resistor
-- 4x male-male wires
+- 4x male to female wires
 
 **Prepare your laptop**
 
@@ -19,9 +19,9 @@ To build this sensor you need the following hardware:
 
 **Wire up the circuit on breadboard**
 
-Place components as shown in the schema. You can plug the HC-SR04 sensor directly on the breadboard, making the blue wires unnecessary.
+Place components as shown in the schema.
 
-The HC-SR04 sensor is a 5V device while the Photon operates at 3.3V. Therefor we take provide power to the sensor from the Vin pin (= 5V from USB).
+The HC-SR04 sensor is a 5V device while the Electron operates at 3.3V. Therefore, we provide power to the sensor from the Vin pin (= 5V from USB).
 
 The 2 resistors function as a voltage divider to convert 5V coming from the sensor to a safe 3.3V level.
 
@@ -33,8 +33,6 @@ R2: 1k Ohm (brown black black brown [brown])
 
 
 **Connect Particle to the cloud**
-
-
 
 **Identify device**
 
