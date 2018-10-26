@@ -76,7 +76,7 @@ At the left-hand side you can see the vertical menu which you will use during th
 
 
 
-Paste the code below in the git url, replacing it&#39;s current content
+Paste the code fromgit url, https://github.com/Code-for-Miami/iot-flood-tracker/blob/master/GiveMeData.ino replacing it&#39;s current content
 
 - From the menu, press VERIFY.
 This should result in the message Code verified! Great work.
