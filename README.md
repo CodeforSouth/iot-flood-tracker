@@ -36,6 +36,8 @@ R2: 1k Ohm (brown black black brown [brown])
 
 **Identify device**
 
+Connect the device to your computer using USB and put the device in [listening mode](blinking dark blue) by holding down the S MODE button until the main status LED blinks dark blue, about 3 seconds
+
 First you want to know the Device ID of the Photon you just connected.
 ```
 $ particle identify
@@ -45,11 +47,13 @@ Your IMEI is 35316207243
 Your ICCID is 8936500002860393
 Your system firmware version is 0.7.0
 ```
+If firmware Version not 0.7 or higher see Mario or Christina
+
 Copy this device id in your TextPad, you will need it in a few moments.
 
 Photon status LED, it should be BREADING CYAN when it&#39;s happily connected to the internet.
 
-Add device to your account (See Mario, Cristina)
+Add device to your account (See Mario, Cristina to be add to the Code for Miami account)
 
 Write sketch for the Photon
 
