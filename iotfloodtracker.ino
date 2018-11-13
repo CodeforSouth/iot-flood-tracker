@@ -27,11 +27,8 @@ void setup()
 }
 
 void publish(double sample, unsigned long timestamp) {
-    char publish_buffer[sizeof(sample)];
-    double* publish_buffer_ptr = (double*)(void*) &publish_buffer;
-    *publish_buffer_ptr = sample;
     Serial.printf("%.2fcm\tat %d\n", sample, timestamp);
-    Particle.publish("level_cm", (char*)&publish_buffer, NO_ACK);
+    Particle.publish("level_mm", String::format("%d", (int)(sample * 10.0)), NO_ACK);
 }
 
 void loop()
