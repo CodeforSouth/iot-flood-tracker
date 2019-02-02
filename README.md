@@ -83,7 +83,7 @@ Paste the code from GitHub url, https://github.com/Code-for-Miami/iot-flood-trac
 - From the menu, press VERIFY.
 This should result in the message Code verified! Great work.
 - Now you are ready to press FLASH
-If everything goes well, you will get a:
+If everything goes well, you will see the following message:
 
 ```
 Flash successful! Please wait a moment while your device is updated...
