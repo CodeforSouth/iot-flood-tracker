@@ -1,10 +1,10 @@
 **Build a Electron Distance Sensor**
 
-In this experiment you are going to build a sensor able to measure distances from 10cm up to 200cm. The data will be transmitted via cell to a cloud service.
+In this experiment, you are going to build a sensor that is able to measure distances from 10cm up to 200cm. The data will be transmitted via cell to The Particle cloud service.
 
 **Required Parts**
 
-To build this sensor you need the following hardware:
+To build this sensor, you need the following hardware:
 
 - 1x breadboard
 - 1x Particle Electron
@@ -21,9 +21,9 @@ To build this sensor you need the following hardware:
 
 Place components as shown in the schema.
 
-The HC-SR04 sensor is a 5V device while the Electron operates at 3.3V. Therefore, we provide power to the sensor from the Vin pin (= 5V from USB).
+The HC-SR04 sensor is a 5V device, while the Electron operates at 3.3V. Therefore, we provide power to the sensor from the Vin pin (= 5V from USB).
 
-The 2 resistors function as a voltage divider to convert 5V coming from the sensor to a safe 3.3V level.
+The 2 resistors function as a voltage divider to convert the 5V coming from the sensor to a safe 3.3V level.
 
 R1: 470 Ohm (yellow purple black black [brown])
 R2: 1k Ohm (brown black black brown [brown])
@@ -36,9 +36,9 @@ R2: 1k Ohm (brown black black brown [brown])
 
 **Identify device**
 
-Connect the device to your computer using USB and put the device in [listening mode](blinking dark blue) by holding down the S MODE button until the main status LED blinks dark blue, about 3 seconds
+Connect the device to your computer using USB and place the device in [listening mode](blinking dark blue) by holding down the S MODE button until the main status LED blinks dark blue, about 3 seconds
 
-First you want to know the Device ID of the Photon you just connected.
+First, you want to know the Device ID of the Photon you just connected:
 ```
 $ particle identify
 
@@ -47,19 +47,19 @@ Your IMEI is 35316207243
 Your ICCID is 8936500002860393
 Your system firmware version is 0.7.0
 ```
-If firmware Version not 0.7 or higher see Mario or Christina
+If firmware version not 0.7.0 or higher, see Mario or Christina.
 
-Copy this device id in your TextPad, you will need it in a few moments.
+Copy this device id to your TextPad. You will need it in a few moments.
 
-Photon status LED, it should be BREADING CYAN when it&#39;s happily connected to the internet.
+The Photon status LED should be BREATHING CYAN when it&#39;s happily connected to the internet.
 
-Add device to your account (See Mario, Cristina to be add to the Code for Miami account)
+Add the device to your account (See Mario or Cristina to be added to the Code for Miami account)
 
 Write sketch for the Photon
 
 Open the online build environment of Particle.io on build.particle.io.
 
-At the left-hand side you can see the vertical menu which you will use during the process. Hover you mouse over each item to get familiar with the different options:
+At the left-hand side, you can see the vertical menu on the left hand side which you will use during the process. Hover your mouse over each item to get familiar with the different options:
 
 
 
@@ -67,25 +67,29 @@ At the left-hand side you can see the vertical menu which you will use during th
 
 **Let&#39;s get started!**
 
-- First we want to select the Photon we connected to our account in the previous step. From the menu, press DEVICES
+- First, we want to select the Photon we connected to our account in the previous step. From the menu, press DEVICES
 - Check if your device is listed and select it by clicking the yellow star in front of the device name.
 - From the menu, press &quot;\&lt; \&gt;&quot; Code to open the code editor
 - Press CREATE NEW APP and enter a Title (e.g. MyFloodMeasuring  )
-- Again at the left-hand side press Libraries (first item below &quot;\&lt; \&gt;&quot;)
-- In the Community Libraries search box type: HC\_SR04
+- Again, at the left-hand side, press Libraries (first item below &quot;\&lt; \&gt;&quot;)
+- In the Community Libraries search box, type: HC\_SR04
 - Press on the search result HC\_SR04
 - Press INCLUDE IN APP, select the app you just created (e.g. MyFloodMeasuring) and press ADD TO THIS APP
 
 
 
-Paste the code fromgit url, https://github.com/Code-for-Miami/iot-flood-tracker/blob/master/GiveMeData.ino replacing it&#39;s current content
+Paste the code from GitHub url, https://github.com/Code-for-Miami/iot-flood-tracker/blob/master/GiveMeData.ino replacing it&#39;s current content
 
 - From the menu, press VERIFY.
 This should result in the message Code verified! Great work.
 - Now you are ready to press FLASH
-If everything goes well, you will get a:
+If everything goes well, you will see the following message:
+
+```
 Flash successful! Please wait a moment while your device is updated...
-- The device should return to breading cyan status color
+```
+
+- The device should return to BREATHING CYAN status color
 
 #### **Monitor the published sensor values**
 
