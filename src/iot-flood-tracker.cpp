@@ -1,8 +1,15 @@
+#include "application.h"
+#line 1 "/Users/bkerley/Documents/iot-flood-tracker/src/iot-flood-tracker.ino"
 // This #include statement was automatically added by the Particle IDE.
 #include <HC_SR04.h>
 
 /* defines */
-#define SAMPLE_RATE_MILLIS (60 * 1000) // how often program should sample
+void setup();
+void publish(double sample, unsigned long timestamp);
+void loop();
+void blinkLed();
+#line 5 "/Users/bkerley/Documents/iot-flood-tracker/src/iot-flood-tracker.ino"
+#define SAMPLE_RATE_MILLIS (5 * 60 * 1000) // how often program should sample
 #define REPORT_RATE_SEC (15 * 60)
 #define REPORT_RATE_MILLIS (REPORT_RATE_SEC * 1000) // how often program should report if delta is with in REPORT_DELTA_CM
 #define REPORT_DELTA_CM 1.0 // if the difference between a sample taken to the previous one is greater then this value program should report the sample
@@ -20,7 +27,6 @@ int echoPin = D5;
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
 HC_SR04 rangefinder = HC_SR04(trigPin, echoPin);
-CellularSignal signal = Cellular.RSSI();
 
 void setup()
 {
