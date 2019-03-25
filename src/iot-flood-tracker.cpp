@@ -4,6 +4,8 @@
 #include <HC_SR04.h>
 
 /* defines */
+int compare_ints(const void* a, const void* b);
+double median_sample();
 void setup();
 void publish(double sample, unsigned long timestamp);
 void loop();
@@ -13,6 +15,11 @@ void blinkLed();
 #define REPORT_RATE_SEC (15 * 60)
 #define REPORT_RATE_MILLIS (REPORT_RATE_SEC * 1000) // how often program should report if delta is with in REPORT_DELTA_CM
 #define REPORT_DELTA_CM 1.0 // if the difference between a sample taken to the previous one is greater then this value program should report the sample
+
+#define SAMPLE_COUNT 5
+#define SAMPLE_PAUSE_MILLIS 5*1000
+
+#define SLEEP_ROUTINE_MILLIS 5*1000
 
 #define RECONNECT_SPIN_MILLIS 1000
 
@@ -27,6 +34,29 @@ int echoPin = D5;
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
 HC_SR04 rangefinder = HC_SR04(trigPin, echoPin);
+
+int compare_ints(const void* a, const void* b)
+{
+    double arg1 = *(const double*)a;
+    double arg2 = *(const double*)b;
+ 
+    if (arg1 < arg2) return -1;
+    if (arg1 > arg2) return 1;
+    return 0;
+}
+
+double median_sample() {
+    double samples[SAMPLE_COUNT];
+    for (int i = 0; i < SAMPLE_COUNT; i++) {
+        samples[i] = rangefinder.getDistanceCM();
+        Particle.process();
+        delay(SAMPLE_PAUSE_MILLIS);
+    }
+
+    qsort(samples, SAMPLE_COUNT, sizeof(double), compare_ints);
+
+    return samples[SAMPLE_COUNT/2];
+}
 
 void setup()
 {
@@ -44,7 +74,7 @@ void publish(double sample, unsigned long timestamp) {
 void loop()
 {
     // take a sample
-    double current_sample = rangefinder.getDistanceCM();
+    double current_sample = median_sample();
     
     unsigned long now = millis();
     
@@ -65,6 +95,7 @@ void loop()
         publish(current_sample, now);
         Serial.printf("published\n");
         lastReportTime = now;
+
     }
     if (big_change) {
         last_reported_sample = current_sample;
@@ -73,6 +104,8 @@ void loop()
     blinkLed();
     if (been_a_while) {
         // picking pin d3 and RISING mode arbitrarily
+        Particle.process();
+        delay(SLEEP_ROUTINE_MILLIS);
         System.sleep(SLEEP_MODE_DEEP, REPORT_RATE_SEC);
     } else {
         delay(SAMPLE_RATE_MILLIS);    
