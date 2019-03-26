@@ -34,6 +34,7 @@ int echoPin = D5;
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
 HC_SR04 rangefinder = HC_SR04(trigPin, echoPin);
+FuelGauge battery;
 
 int compare_ints(const void* a, const void* b)
 {
@@ -73,6 +74,7 @@ void publish(double sample, unsigned long timestamp) {
 
 void loop()
 {
+    Particle.process();
     // take a sample
     double current_sample = median_sample();
     
@@ -93,6 +95,7 @@ void loop()
     // publish if REPORT_RATE_MILLIS has passed or delta is bigger then REPORT_DELTA_CM
     if( been_a_while || big_change ) {
         publish(current_sample, now);
+        Particle.publish("spark/battery", String::format("%f", battery.getSoC()));
         Serial.printf("published\n");
         lastReportTime = now;
 
@@ -103,9 +106,9 @@ void loop()
     
     blinkLed();
     if (been_a_while) {
-        // picking pin d3 and RISING mode arbitrarily
         Particle.process();
         delay(SLEEP_ROUTINE_MILLIS);
+        Particle.process();
         System.sleep(SLEEP_MODE_DEEP, REPORT_RATE_SEC);
     } else {
         delay(SAMPLE_RATE_MILLIS);    
