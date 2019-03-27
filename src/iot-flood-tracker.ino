@@ -1,7 +1,8 @@
 // This #include statement was automatically added by the Particle IDE.
 #include <HC_SR04.h>
 
-/* defines */
+#define QUIP "oodles and oodles"
+
 #define SAMPLE_RATE_MILLIS (5 * 60 * 1000) // how often program should sample
 #define REPORT_RATE_SEC (15 * 60)
 #define REPORT_RATE_MILLIS (REPORT_RATE_SEC * 1000) // how often program should report if delta is with in REPORT_DELTA_CM
@@ -56,6 +57,8 @@ void setup()
     pinMode(D7, OUTPUT);
     Particle.variable("cm", &last_reported_sample, DOUBLE);
     Particle.connect();
+    Particle.publish("spark/floodtracker-quip", QUIP);
+    Serial.println(QUIP);
 }
 
 void publish(double sample, unsigned long timestamp) {

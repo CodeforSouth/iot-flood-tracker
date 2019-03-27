@@ -3,14 +3,15 @@
 // This #include statement was automatically added by the Particle IDE.
 #include <HC_SR04.h>
 
-/* defines */
 int compare_ints(const void* a, const void* b);
 double median_sample();
 void setup();
 void publish(double sample, unsigned long timestamp);
 void loop();
 void blinkLed();
-#line 5 "/Users/bkerley/Documents/iot-flood-tracker/src/iot-flood-tracker.ino"
+#line 4 "/Users/bkerley/Documents/iot-flood-tracker/src/iot-flood-tracker.ino"
+#define QUIP "oodles and oodles"
+
 #define SAMPLE_RATE_MILLIS (5 * 60 * 1000) // how often program should sample
 #define REPORT_RATE_SEC (15 * 60)
 #define REPORT_RATE_MILLIS (REPORT_RATE_SEC * 1000) // how often program should report if delta is with in REPORT_DELTA_CM
@@ -50,11 +51,14 @@ double median_sample() {
     double samples[SAMPLE_COUNT];
     for (int i = 0; i < SAMPLE_COUNT; i++) {
         samples[i] = rangefinder.getDistanceCM();
+        Serial.printf("%fcm ", samples[i]);
         Particle.process();
         delay(SAMPLE_PAUSE_MILLIS);
     }
 
     qsort(samples, SAMPLE_COUNT, sizeof(double), compare_ints);
+
+    Serial.printf("median %f\n", samples[SAMPLE_COUNT/2]);
 
     return samples[SAMPLE_COUNT/2];
 }
@@ -65,11 +69,20 @@ void setup()
     pinMode(D7, OUTPUT);
     Particle.variable("cm", &last_reported_sample, DOUBLE);
     Particle.connect();
+    delay(SLEEP_ROUTINE_MILLIS);
+    Particle.process();
+    Particle.publish("floodtracker/quip", QUIP, PUBLIC | NO_ACK);
+    Serial.println(QUIP);
 }
 
 void publish(double sample, unsigned long timestamp) {
     Serial.printf("%.2fcm\tat %d\n", sample, timestamp);
-    Particle.publish("level_mm", String::format("%d", (int)(sample * 10.0)), PUBLIC | NO_ACK);
+    Particle.publish("level_mm", 
+                     String::format("%d", (int)(sample * 10.0)), 
+                     PUBLIC | NO_ACK);
+    Particle.publish("floodtracker/level_mm", 
+                     String::format("%d", (int)(sample * 10.0)), 
+                     PUBLIC | NO_ACK);
 }
 
 void loop()
@@ -95,7 +108,9 @@ void loop()
     // publish if REPORT_RATE_MILLIS has passed or delta is bigger then REPORT_DELTA_CM
     if( been_a_while || big_change ) {
         publish(current_sample, now);
-        Particle.publish("spark/battery", String::format("%f", battery.getSoC()));
+        Particle.publish("floodtracker/battery", 
+                         String::format("%f", battery.getSoC()), 
+                         PUBLIC | NO_ACK);
         Serial.printf("published\n");
         lastReportTime = now;
 
