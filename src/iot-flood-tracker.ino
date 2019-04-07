@@ -63,6 +63,7 @@ void setup()
     pinMode(D7, OUTPUT);
     Particle.variable("cm", &last_reported_sample, DOUBLE);
     Particle.connect();
+    Particle.process();
     Particle.publish("floodtracker/quip", QUIP, PUBLIC | NO_ACK);
     Serial.println(QUIP);
 }
@@ -112,25 +113,21 @@ void loop()
         last_reported_sample = current_sample;
     }
     
-    blinkLed();
-    if (been_a_while) {
-        long sleep_plan = REPORT_RATE_SEC;
-        float charge = battery.getSoC();
-        if (charge < LOW_POWER_THRESHOLD) {
-            sleep_plan = LOW_POWER_SLEEP_SEC;
-        }
-        if (charge < CRITICAL_POWER_THRESHOLD) {
-            sleep_plan = CRITICAL_POWER_SLEEP_SEC;
-        }
-        Particle.publish("floodtracker/sleep_plan", String::format("%d", sleep_plan), PUBLIC | NO_ACK);
 
-        Particle.process();
-        delay(SLEEP_ROUTINE_MILLIS);
-        Particle.process();
-        System.sleep(SLEEP_MODE_DEEP, sleep_plan);
-    } else {
-        delay(SAMPLE_RATE_MILLIS);    
+    long sleep_plan = REPORT_RATE_SEC;
+    float charge = battery.getSoC();
+    if (charge < LOW_POWER_THRESHOLD) {
+        sleep_plan = LOW_POWER_SLEEP_SEC;
     }
+    if (charge < CRITICAL_POWER_THRESHOLD) {
+        sleep_plan = CRITICAL_POWER_SLEEP_SEC;
+    }
+    Particle.publish("floodtracker/sleep_plan", String::format("%d", sleep_plan), PUBLIC | NO_ACK);
+
+    Particle.process();
+    delay(SLEEP_ROUTINE_MILLIS);
+    Particle.process();
+    System.sleep(SLEEP_MODE_DEEP, sleep_plan);
 }
 
 void blinkLed() {
