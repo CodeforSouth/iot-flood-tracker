@@ -1,23 +1,40 @@
-**Build a Electron Distance Sensor**
+# Build a Electron Distance Sensor
 
 In this experiment, you are going to build a sensor that is able to measure distances from 10cm up to 200cm. The data will be transmitted via cell to The Particle cloud service.
 
-**Required Parts**
+## Required Parts
 
 To build this sensor, you need the following hardware:
 
-- 1x breadboard
-- 1x Particle Electron
-- 1x HC-SR04 sensor
+- 1x perfboard
+- 1x Particle Electron kit
+- 1x RCWL-1601 ultrasonic range sensor
 - 1x 470 Ohm resistor
 - 1x 1k Ohm resistor
-- 4x male to female wires
+- 4x wires with female ends for the sensor (the other ends will be clipped and soldered)
+- miscellaneous wires
+- 1x 3.7V lithium-ion battery
+- 1x Adafruit MCP73871 USB/Solar LiPoly/Li-Ion Charger **TODO: FIGURE OUT IF THE NEW ONE WORKS**
+- 1x solar panel
+- 1x BAPI-Box weatherproof junction box
 
-**Prepare your laptop**
+### Useful Parts
+
+- 1x 60cm long 3" schedule 40 PVC pipe for the main housing
+- 1x end cap
+- 1x support bracket for the RCWL-1601 in the PVC pipe
+- 2x hook & loop fasteners
+- 1x 2" long 1" PVC pipe to connect the junction box to the main housing
+- silicone sealant
+- glue
+
+## Prepare your laptop
 
 [**https://docs.particle.io/guide/tools-and-features/cli/photon/**](https://docs.particle.io/guide/tools-and-features/cli/photon/)
 
-**Wire up the circuit on breadboard**
+## Wire up the circuit on breadboard
+
+**TODO: FIGURE OUT IF THE VOLTAGE DIVIDER IS NECESSARY**
 
 Place components as shown in the schema.
 
