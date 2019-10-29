@@ -2,7 +2,7 @@
 
 <img src='https://i.imgur.com/gLgQAJl.png' height='400px'/>
 
-Miami floods due to climate change and as of recently due to many factors during specific times of the year due to King Tide. We at Code for Miami see this as a problem that needs to be addressed. For that reason, we are showing others DIY ways to build their own sensors to track flooding.
+Miami floods "badly" as of recently due to many factors. We at Code for Miami see this as a problem that needs to be addressed. For that reason, we are showing others DIY ways to build their own sensors to track flooding.
 
 In this experiment, you are going to build a sensor that is able to measure distances from 10cm up to 200cm. The data will be transmitted via cell to The Particle cloud service.
 
